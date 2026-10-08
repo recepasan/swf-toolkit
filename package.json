@@ -1,0 +1,73 @@
+{
+  "name": "swf-toolkit",
+  "version": "0.1.0",
+  "description": "Pure TypeScript toolkit for Adobe Flash SWF files: read/write, AS3 decompiler and compiler, AVM2/AVM1 assemblers, asset export/import.",
+  "author": "Recep Asan (https://github.com/recepasan)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recepasan/swf-toolkit.git"
+  },
+  "homepage": "https://github.com/recepasan/swf-toolkit#readme",
+  "bugs": {
+    "url": "https://github.com/recepasan/swf-toolkit/issues"
+  },
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "swf-toolkit": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node scripts/finish-build.mjs",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run clean && npm test",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "abc",
+    "actionscript",
+    "as2",
+    "as3",
+    "assembler",
+    "avm1",
+    "avm2",
+    "compiler",
+    "decompiler",
+    "disassembler",
+    "flash",
+    "pcode",
+    "swf"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "5.9.3"
+  }
+}
